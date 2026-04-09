@@ -1,9 +1,13 @@
+import os
 import serial
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SERIAL_PORT = "COM3"   # change to your Arduino's port
 BAUD_RATE = 9600
-WEBHOOK_URL = "https://discord.com/api/webhooks/1490244874359013516/B0x_KiDFGpdopBzD9fUzH2t00pyfyWc_l3DZfWD8Tcd9dGklhuhPzPDXtwv0NN0LVTpj"       # paste your Discord webhook URL here
+WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
 
